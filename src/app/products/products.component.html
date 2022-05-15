@@ -1,1 +1,16 @@
-<p>products works!</p>
+<h2>Products</h2>
+<ul class="products">
+  <li *ngFor="let product of products">
+    <button type="button" (click)="onSelect(product)">
+      <span class="badge">{{product.name}} </span>
+      <span class="name">{{product.price}} €</span>
+    </button>
+  </li>
+</ul>
+<div *ngIf="selectedProduct">
+  <h2>{{selectedProduct.name | uppercase}} Ingredients</h2>
+  <div>{{selectedProduct.name}}</div>
+  <button type="button">Add to cart</button>
+  <div>
+  </div>
+</div>
