@@ -1,6 +1,16 @@
 <h2>Cart</h2>
 <div class="products-menu">
-  <a *ngFor="let product of products">
-    {{product.name}}
-  </a>
+  <ul class="products">
+    <li *ngFor="let product of products">
+      <button type="button" (click)="onSelect(product)">
+        <span class="badge">{{product.name}} </span>
+        <span class="name">{{product.price}} € </span>
+      </button>
+    </li>
+  </ul>
+</div>
+<div *ngIf="products.length">
+  <button type="button" (click)="onOrder()">ORDER</button>
+  <div>
+  </div>
 </div>

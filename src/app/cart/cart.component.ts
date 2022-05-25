@@ -10,6 +10,8 @@ import { CartService } from '../cart.service';
 })
 export class CartComponent implements OnInit {
    products: Product[] = [];
+   selectedProduct?: Product;
+   orderedProduct?: Product;
 
 
   constructor(private productService: ProductService, private cartService: CartService) { }
@@ -18,9 +20,16 @@ export class CartComponent implements OnInit {
     this.getProducts();
   }
 
+  onSelect(product: Product): void {
+      this.selectedProduct = product;
+  }
+
   getProducts(): void {
     this.cartService.getCartProducts()
           .subscribe(products => this.products = products.slice(0, 5));
   }
 
+   onOrder(): void {
+    console.log(this.products[0].id);
+   }
 }
