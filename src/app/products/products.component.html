@@ -10,7 +10,7 @@
 <div *ngIf="selectedProduct">
   <h2>{{selectedProduct.name | uppercase}} Ingredients</h2>
   <div>{{selectedProduct.name}}</div>
-  <button type="button">Add to cart</button>
+  <button type="button" (click)="onAdd(selectedProduct)">Add to cart</button>
   <div>
   </div>
 </div>
