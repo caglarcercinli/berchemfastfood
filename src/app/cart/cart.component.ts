@@ -30,6 +30,7 @@ export class CartComponent implements OnInit {
   }
 
    onOrder(): void {
-    console.log(this.products[0].id);
+    this.cartService.orderProduct(this.products[0]);
+    console.log('from onOrder cart.component.ts '+this.products[0].id);
    }
 }

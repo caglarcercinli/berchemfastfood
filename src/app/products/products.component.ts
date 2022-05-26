@@ -26,7 +26,7 @@ export class ProductsComponent implements OnInit {
       this.selectedProduct = product;
    }
    onAdd(product:Product): void {
-      console.log(product.id);
+      console.log('from onAdd productService '+product.id);
       this.addedProduct = product;
       this.cartService.addProduct(this.addedProduct);
    }
