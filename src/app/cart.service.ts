@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import {Product} from './product';
+import { Product } from './product';
+import { Order } from './order';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -9,17 +10,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class CartService {
 
-  products: Product[]= [];
-   private productsUrl = 'http://localhost:8080/orders';
+  products: Product[] = [];
+  private productsUrl = 'http://localhost:8080/orders';
 
-   httpOptions = {
-       headers: new HttpHeaders({
-         'Content-Type':  'application/json',
-         'Authorization': 'Basic ' + btoa('averell:hungry')
-       })
-     };
-
-  constructor(private http: HttpClient) {
+  constructor(private httpClient: HttpClient) {
   }
 
   getCartProducts(): Observable<Product[]> {
@@ -27,11 +21,25 @@ export class CartService {
   }
 
   addProduct(product: Product): void {
-     this.products.push(product);
+    this.products.push(product);
   }
 
-  orderProduct(product: Product): void {
-     console.log(product.id);
-//      this.http.post<any>(this.productsUrl, this.body, this.headers );
+  orderProduct(product: Product ): void {
+    console.log('post order ' + product.id);
+    const body=
+    JSON.stringify( 
+      {
+      'user_id': 2
+    });
+    this.httpClient.post('http://localhost:8080/orders',
+    body,
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        })
+      })
+      .subscribe(data => {
+        console.log(data);
+      })     
   }
 }
