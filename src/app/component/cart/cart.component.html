@@ -18,7 +18,7 @@
           <tbody>
           <tr *ngFor="let item of products; let i = index">
             <td>{{i+1}}</td>
-            <td>{{item.title}}</td>
+            <td>{{item.name}}</td>
             <td><img style="width: 120px;" src="{{item.image}}" alt=""></td>
             <td style="width: 25%;">{{item.description}}</td>
             <th style="width: 12%;">{{item.price}}</th>
@@ -28,15 +28,22 @@
               <button (click)="removeItem(item)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
             </td>
           </tr>
-          <tr>
-            <td colspan="4"></td>
-            <td><button (click)="emptycart()" class="btn btn-danger">Empty Cart</button></td>
-            <td><button routerLink="/products" class="btn btn-primary">Shop More</button></td>
-            <td><button (click)="orderProduct()" class="btn btn-success">Order</button></td>
-            <td><strong>Grand Total : ${{grandTotal}}</strong></td>
-          </tr>
           </tbody>
         </table>
+        <strong>Grand Total : ${{grandTotal}}</strong>
+        <form>
+          <div class="form-group">
+            <label for="inputAddress">Address</label>
+            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+          </div>
+          <div class="form-group">
+            <label for="inputAddress">Telnumber</label>
+            <input type="text" class="form-control" id="inputTelnumber" placeholder="0456000000">
+          </div>
+          <button (click)="orderProduct()" class="btn btn-success">Order</button>
+          <button (click)="emptycart()" class="btn btn-danger">Empty Cart</button>
+          <button routerLink="/products" class="btn btn-primary">Shop More</button>
+        </form>
       </div>
     </div>
   </div>
