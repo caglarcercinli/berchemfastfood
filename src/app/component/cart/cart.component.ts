@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { CartService } from 'src/app/service/cart.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Hero } from './hero';
 import { FormsModule } from '@angular/forms';
 
 
