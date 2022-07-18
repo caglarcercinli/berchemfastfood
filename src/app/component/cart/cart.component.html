@@ -18,7 +18,7 @@
           <tbody>
           <tr *ngFor="let item of products; let i = index">
             <td>{{i+1}}</td>
-            <td>{{item.title}}</td>
+            <td>{{item.name}}</td>
             <td><img style="width: 120px;" src="{{item.image}}" alt=""></td>
             <td style="width: 25%;">{{item.description}}</td>
             <th style="width: 12%;">{{item.price}}</th>
@@ -28,15 +28,14 @@
               <button (click)="removeItem(item)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
             </td>
           </tr>
-          <tr>
-            <td colspan="4"></td>
-            <td><button (click)="emptycart()" class="btn btn-danger">Empty Cart</button></td>
-            <td><button routerLink="/products" class="btn btn-primary">Shop More</button></td>
-            <td><button (click)="orderProduct()" class="btn btn-success">Order</button></td>
-            <td><strong>Grand Total : ${{grandTotal}}</strong></td>
-          </tr>
           </tbody>
         </table>
+        <strong>Grand Total : ${{grandTotal}}</strong>
+        <form #userPost="ngForm" (ngSubmit)="orderProduct(userPost.value)">
+          <br><input type="text" name="address" ngModel placeholder="address"><br>
+            <input type="text" name="telnumber" ngModel placeholder="telnumber"><br>
+            <button type="submit">Submit data</button>
+        </form>
       </div>
     </div>
   </div>
@@ -55,4 +54,3 @@
     </div>
   </div>
 </ng-container>
-
