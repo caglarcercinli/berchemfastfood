@@ -31,18 +31,10 @@
           </tbody>
         </table>
         <strong>Grand Total : ${{grandTotal}}</strong>
-        <form>
-          <div class="form-group">
-            <label for="inputAddress">Address</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-          </div>
-          <div class="form-group">
-            <label for="inputAddress">Telnumber</label>
-            <input type="text" class="form-control" id="inputTelnumber" placeholder="0456000000">
-          </div>
-          <button (click)="orderProduct()" class="btn btn-success">Order</button>
-          <button (click)="emptycart()" class="btn btn-danger">Empty Cart</button>
-          <button routerLink="/products" class="btn btn-primary">Shop More</button>
+        <form #userPost="ngForm" (ngSubmit)="orderProduct(userPost.value)">
+          <br><input type="text" name="address" ngModel placeholder="address"><br>
+            <input type="text" name="telnumber" ngModel placeholder="telnumber"><br>
+            <button type="submit">Submit data</button>
         </form>
       </div>
     </div>
@@ -62,4 +54,3 @@
     </div>
   </div>
 </ng-container>
-
